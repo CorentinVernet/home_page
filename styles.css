@@ -11,13 +11,13 @@ body {
 }
 
 .container {
-  background-image: url(background_container.png);
-  background-size: 350px;
+  /*background-image: url(background_container.png);
+  background-size: 350px;*/
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 300px;
+  width: 250px;
 }
 
 h1 {
