@@ -12,13 +12,13 @@ body {
 
 .container {
   background-image: url(background_container.png);
-  background-size: 520px; /* Background of container */
+  background-size: 600px; /* Background of container */
   padding: 20px;
   border-radius: 30px;
   text-align: center;
   /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/ /*Transparency of container*/
   width: 230px;
-  height: 650px;
+  height: 750px;
   transform: translateY(-50px);
 }
 
