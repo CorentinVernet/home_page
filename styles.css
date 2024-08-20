@@ -1,23 +1,23 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: #000000;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  background-image: url(background_2.png);
+  /*background-image: url(background_2.png);*/
 }
 
 .container {
-  /*background-image: url(background_container.png);
-  background-size: 350px;*/
+  background-image: url(background_container.png);
+  background-size: 350px; /*Background of container*/
   padding: 20px;
   border-radius: 30px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/ /*Transparency of container*/
   text-align: center;
-  width: 250px;
+  width: 230px;
 }
 
 h1 {
@@ -30,7 +30,7 @@ h1 {
 }
 
 input[type="text"] {
-  width: 80%;
+  width: 65%;
   padding: 8px;
   margin: 5px 0;
   border-radius: 5px;
