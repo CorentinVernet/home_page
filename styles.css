@@ -10,11 +10,11 @@ body {
 }
 
 .container {
-  background-image: url(background_container.png);
-  background-size: 600px;
+  background-image: url(container_background.jpeg);
   padding: 20px;
   border-radius: 30px;
   text-align: center;
+  align-items: center;
   width: 230px;
   height: 750px;
   transform: translateY(-50px);
@@ -22,11 +22,8 @@ body {
 
 h1 {
   margin-bottom: 20px;
-}
-
-.search-bar,
-.shortcut-form {
-  margin-bottom: 20px;
+  color: #f1e3e3;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 input[type="text"] {
@@ -35,77 +32,4 @@ input[type="text"] {
   margin: 5px 0;
   border-radius: 24px;
   border: 1px solid #ccc;
-}
-
-button {
-  padding: 8px 15px;
-  border-radius: 5px;
-  border: none;
-  background-color: #007bff;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-.shortcuts {
-  margin-top: 20px;
-  text-align: left;
-  padding: 10px;
-}
-
-.shortcut {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.shortcut a {
-  color: #007bff;
-  text-decoration: none;
-  flex-grow: 1;
-}
-
-.shortcut a:hover {
-  text-decoration: underline;
-}
-
-.shortcut button.delete-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.shortcut button.delete-button img {
-  width: 20px;
-  height: 20px;
-}
-
-@media only screen and (max-width: 768px) {
-  .container {
-    width: 100%;
-    padding: 15px;
-  }
-
-  input[type="text"] {
-    width: 80%;
-  }
-
-  h1 {
-    font-size: 1.5em;
-  }
-
-  .shortcut {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .shortcut a {
-    margin-bottom: 10px;
-  }
 }
