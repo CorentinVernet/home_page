@@ -51,7 +51,7 @@ function addShortcut() {
     document.getElementById("shortcut-name").value = "";
     document.getElementById("shortcut-url").value = "";
   } else {
-    alert("Veuillez entrer un nom valide et une URL valide pour le raccourci.");
+    alert("Veuillez entrer une URL valide.");
   }
 }
 
