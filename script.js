@@ -1,7 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("search");
-  const shortcutsDiv = document.getElementById("shortcuts");
-  const template = document.getElementById("shortcut-template").content;
 
   function searchWeb() {
     const query = searchInput.value.trim();
@@ -18,8 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function loadShortcuts() {
-    const shortcuts = localStorage.getItem("shortcuts");
-    return shortcuts ? JSON.parse(shortcuts) : [];
+    return JSON.parse(localStorage.getItem("shortcuts") || "[]");
   }
 
   function displayShortcuts() {
@@ -30,11 +27,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     shortcuts.forEach(({ name, url }, index) => {
       const shortcutElement = template.cloneNode(true);
-
       const linkElement = shortcutElement.querySelector(".shortcut-link");
       linkElement.href = url;
       linkElement.textContent = name;
-
       linkElement.removeAttribute("target");
 
       const deleteButton = shortcutElement.querySelector(".delete-button");
