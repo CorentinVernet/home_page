@@ -1,34 +1,11 @@
 function searchWeb() {
-  const query = document.getElementById("search").value;
+  const query = document.getElementById("search").value.trim();
   if (query) {
-    window.open(`https://www.google.com/search?q=${query}`, "_blank");
+    window.open(
+      `https://www.google.com/search?q=${encodeURIComponent(query)}`,
+      "_blank"
+    );
     document.getElementById("search").value = "";
-  }
-}
-
-function addShortcut() {
-  const name = document.getElementById("shortcut-name").value;
-  const url = document.getElementById("shortcut-url").value;
-
-  if (name && url) {
-    const shortcutsDiv = document.getElementById("shortcuts");
-
-    const shortcutElement = document.createElement("div");
-    shortcutElement.className = "shortcut";
-
-    const linkElement = document.createElement("a");
-    linkElement.href = url;
-    linkElement.target = "_blank";
-    linkElement.textContent = name;
-
-    shortcutElement.appendChild(linkElement);
-
-    shortcutsDiv.appendChild(shortcutElement);
-
-    document.getElementById("shortcut-name").value = "";
-    document.getElementById("shortcut-url").value = "";
-  } else {
-    alert("Veuillez entrer un nom et une URL pour le raccourci.");
   }
 }
 
@@ -43,37 +20,29 @@ function loadShortcuts() {
 
 function displayShortcuts() {
   const shortcutsDiv = document.getElementById("shortcuts");
+  const template = document.getElementById("shortcut-template").content;
   shortcutsDiv.innerHTML = "<h2>Vos raccourcis</h2>";
-
   const shortcuts = loadShortcuts();
-  shortcuts.forEach(({ name, url }, index) => {
-    const shortcutElement = document.createElement("div");
-    shortcutElement.className = "shortcut";
 
-    const linkElement = document.createElement("a");
+  shortcuts.forEach(({ name, url }, index) => {
+    const shortcutElement = template.cloneNode(true);
+
+    const linkElement = shortcutElement.querySelector(".shortcut-link");
     linkElement.href = url;
-    linkElement.target = "_blank";
     linkElement.textContent = name;
 
-    const deleteButton = document.createElement("button");
-    deleteButton.className = "delete-button";
-    deleteButton.innerHTML = '<img src="poubelle.png" alt="Supprimer">';
+    const deleteButton = shortcutElement.querySelector(".delete-button");
+    deleteButton.onclick = () => removeShortcut(index);
 
-    deleteButton.onclick = function () {
-      removeShortcut(index);
-    };
-
-    shortcutElement.appendChild(linkElement);
-    shortcutElement.appendChild(deleteButton);
     shortcutsDiv.appendChild(shortcutElement);
   });
 }
 
 function addShortcut() {
-  const name = document.getElementById("shortcut-name").value;
-  const url = document.getElementById("shortcut-url").value;
+  const name = document.getElementById("shortcut-name").value.trim();
+  const url = document.getElementById("shortcut-url").value.trim();
 
-  if (name && url) {
+  if (name && url && isValidURL(url)) {
     const shortcuts = loadShortcuts();
     shortcuts.push({ name, url });
     saveShortcuts(shortcuts);
@@ -82,31 +51,39 @@ function addShortcut() {
     document.getElementById("shortcut-name").value = "";
     document.getElementById("shortcut-url").value = "";
   } else {
-    alert("Veuillez entrer un nom et une URL pour le raccourci.");
+    alert("Veuillez entrer un nom valide et une URL valide pour le raccourci.");
+  }
+}
+
+function isValidURL(url) {
+  try {
+    new URL(url);
+    return true;
+  } catch {
+    return false;
   }
 }
 
 function removeShortcut(index) {
-  let shortcuts = loadShortcuts();
+  const shortcuts = loadShortcuts();
   shortcuts.splice(index, 1);
   saveShortcuts(shortcuts);
   displayShortcuts();
 }
 
-function handleKeyPress(event, action) {
+function handleKeyPress(event) {
   if (event.key === "Enter") {
-    action();
+    if (document.activeElement.id === "search") {
+      searchWeb();
+    } else if (
+      document.activeElement.id === "shortcut-name" ||
+      document.activeElement.id === "shortcut-url"
+    ) {
+      addShortcut();
+    }
   }
 }
 
-document
-  .getElementById("search")
-  .addEventListener("keypress", (event) => handleKeyPress(event, searchWeb));
-document
-  .getElementById("shortcut-name")
-  .addEventListener("keypress", (event) => handleKeyPress(event, addShortcut));
-document
-  .getElementById("shortcut-url")
-  .addEventListener("keypress", (event) => handleKeyPress(event, addShortcut));
+document.addEventListener("keypress", handleKeyPress);
 
 window.onload = displayShortcuts;

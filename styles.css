@@ -7,16 +7,14 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  /*background-image: url(background_2.png);*/
 }
 
 .container {
   background-image: url(background_container.png);
-  background-size: 600px; /* Background of container */
+  background-size: 600px;
   padding: 20px;
   border-radius: 30px;
   text-align: center;
-  /*box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);*/ /*Transparency of container*/
   width: 230px;
   height: 750px;
   transform: translateY(-50px);
@@ -46,6 +44,7 @@ button {
   background-color: #007bff;
   color: white;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -55,11 +54,13 @@ button:hover {
 .shortcuts {
   margin-top: 20px;
   text-align: left;
+  padding: 10px;
 }
 
 .shortcut {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
@@ -67,6 +68,7 @@ button:hover {
 .shortcut a {
   color: #007bff;
   text-decoration: none;
+  flex-grow: 1;
 }
 
 .shortcut a:hover {
