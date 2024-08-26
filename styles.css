@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-  background-image: url(container_background1.jpg);
+  background-image: url(container_background.jpg);
   background-size: cover;
   padding: 20px;
   border-radius: 30px;
