@@ -1,0 +1,12 @@
+#date-time {
+  font-family: "Lora", serif;
+  color: #ebe5e5;
+  font-size: 18px;
+  font-weight: normal;
+  margin-top: 20px;
+}
+
+.time {
+  font-size: 80px;
+  color: #000000;
+}
